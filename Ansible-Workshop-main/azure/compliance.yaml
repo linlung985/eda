@@ -1,0 +1,11 @@
+---
+- hosts: linux
+  remote_user: azureuser
+  tasks:
+  - name: "Check kdump enabled"
+    ansible.builtin.service:
+      name: kdump
+      state: started
+      enabled: yes
+    become: true
+    become_user: root
