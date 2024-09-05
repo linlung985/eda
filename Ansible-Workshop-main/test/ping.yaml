@@ -1,5 +1,0 @@
----
-- hosts: linux
-  tasks:
-  - name: "Ping linux"
-    ansible.builtin.ping:

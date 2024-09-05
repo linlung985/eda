@@ -1,8 +1,0 @@
----
-collections:
-  - cyberark.conjur
-  - ansible.posix
-  - ansible.windows
-  - community.postgresql
-  - chocolatey.chocolatey
-  - community.windows
