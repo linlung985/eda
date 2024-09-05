@@ -1,0 +1,8 @@
+---
+- hosts: linux
+  tasks:
+  - name: "Check kdump enabled"
+    ansible.builtin.service:
+      name: kdump
+      state: started
+      enabled: yes
