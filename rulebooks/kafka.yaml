@@ -4,7 +4,7 @@
   sources:
   - name: kafka
     ansible.eda.kafka:
-      host: 10.9.79.143
+      host: edaworkshop.ansible.test
       port: 9092
       topic: eda
   rules:
