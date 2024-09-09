@@ -1,15 +1,15 @@
 ---
-- name: Hello Events  
-  hosts: localhost
+- name: Monitor configuration
+  hosts: all
   sources:
-  - name: kafka
-    ansible.eda.kafka:
-      host: kafka
-      port: 9092
-      topic: orders
+  - name: webhook
+    ansible.eda.webhook:
+      host: 0.0.0.0
+      port: 5000
   rules:
-  - name: Say Hello
-    condition: event.target_os == "linux" and event.tracking_id == 345
+  - name: Configuration Changed
+    condition: event.payload.message != ""
     action:
-      debug:
-      msg: “{{ event }}”
+      run_job_template:
+        name: Recover
+        organization: Default
