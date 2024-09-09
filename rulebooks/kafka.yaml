@@ -1,16 +1,26 @@
 ---
-- name: Hello Events  
-  hosts: localhost
+- name: Listen for events on kafka
+  hosts: all
+
   sources:
-  - name: kafka
-    ansible.eda.kafka:
-      host: edaworkshop.ansible.test
-      port: 9092
-      topic: eda
+    - ansible.eda.kafka:
+        host: kafka-0.kafka-headless.kafka.svc.cluster.local
+        port: 9092
+        topic: kafka-test-topic
+        group_id: ansible-eda
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 8080
+
   rules:
-  - name: Send email
-    condition: event.payload.message != ""
-    action:
-      run_job_template:
-        name: email
-        organization: Default
+    - name: kafka
+      condition: event.message != ""
+      action:
+        run_playbook:
+          name: do-something.yml
+    - name: webhook
+      condition: event.payload.message != ""
+      action:
+        run_playbook:
+          name: do-something.yml
+          var_root: payload
