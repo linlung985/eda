@@ -9,7 +9,13 @@
       topic: eda
   rules:
   - name: Send email
-    condition: event.payload.message == "eda"
+    condition: event.payload.message != ""
+    action:
+      run_job_template:
+        name: email
+        organization: Default
+  - name: Send email2
+    condition: event.message != ""
     action:
       run_job_template:
         name: email
