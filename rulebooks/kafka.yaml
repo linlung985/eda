@@ -4,12 +4,12 @@
   sources:
   - name: kafka
     ansible.eda.kafka:
-      host: kafka
+      host: 10.9.79.143
       port: 9092
-      topic: orders
+      topic: eda
   rules:
-  - name: Say Hello
-    condition: event.target_os == "linux" and event.tracking_id == 345
+  - name: Send email
+    condition: event.payload.message == "eda"
     action:
       run_job_template:
         name: email
