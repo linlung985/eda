@@ -6,9 +6,10 @@
     ansible.eda.url_check:
       urls:
         - https://192.168.196.131
+      delay: 10
   rules:
-  - name: Configuration Changed
-    condition: event.payload.message != ""
+  - name: 如果回應不是200，則記錄事件
+    condition: event.url_check.response_code != 200
     action:
       run_job_template:
         name: Recover
