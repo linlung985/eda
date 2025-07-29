@@ -5,7 +5,7 @@
   - name: url_check
     ansible.eda.url_check:
       urls:
-        - http://192.168.196.121
+        - https://192.168.196.131
       delay: 10
   rules:
   - name: 如果回應不是200，則記錄事件
