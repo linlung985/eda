@@ -10,7 +10,4 @@
   - name: Configuration Changed
     condition: true
     action:
-      debug:
-        Event: {{ event | to_nice_json }}
-        Vars: {{ vars | to_nice_json }}
-        Env: {{ env }}
+      print_event:
