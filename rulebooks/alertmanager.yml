@@ -4,8 +4,8 @@
   sources:
   - name: alertmanager
     ansible.eda.alertmanager:
-      host: 172.30.5.160
-      port: 9090
+      host: 0.0.0.0
+      port: 5000
   rules:
   - name: Configuration Changed
     condition:
