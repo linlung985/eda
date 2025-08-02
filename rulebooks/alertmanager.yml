@@ -8,6 +8,8 @@
       port: 5000
   rules:
   - name: Configuration Changed
-    condition: true
+    condition: event.alert.labels.alertname == "HighFilesystemUsage" and event.alert.status == "firing" and event.alert.labels.instance == "rhel7.wkshop.lab:9100"
     action:
-      print_event:
+      run_job_template:
+        name: Recover
+        organization: Default
