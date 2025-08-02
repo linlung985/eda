@@ -8,10 +8,7 @@
       port: 5000
   rules:
   - name: Configuration Changed
-    condition:
-      all:
-        - event.alert.status == "firing"
-        - event.alert.labels.alertname == "HighFilesystemUsage"
+    condition: event.alert.labels.job == "HighFilesystemUsage" and event.alert.status == "firing"
     action:
       run_job_template:
         name: Recover
