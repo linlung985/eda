@@ -5,12 +5,12 @@
   - name: url_check
     ansible.eda.url_check:
       urls:
-        - https://rhel7.workshop.lab
-      delay: 10
+        - http://192.168.196.121
+#      delay: 10
   rules:
-  - name: 如果回應不是200，則記錄事件
+  - name: Restart service if webpage unreachable
     condition: event.url_check.status == "down"
     action:
       run_job_template:
-        name: Recover
+        name: httpd_restart
         organization: Default
