@@ -8,7 +8,7 @@
       port: 5001
   rules:
   - name: Configuration Changed
-    condition: event.alert.labels.alertname == "TLSCertificateExpiring" and event.alert.status == "firing" and event.alert.labels.instance == "https://rhel7.wkshop.lab"
+    condition: event.alert.labels.alertname == "TLSCertificateExpiring" and event.alert.status == "firing" and event.alert.labels.instance == "https://rhel8.workshop.lab"
     action:
       run_job_template:
         name: tls-certificate-expire
