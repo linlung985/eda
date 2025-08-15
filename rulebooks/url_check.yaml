@@ -5,7 +5,7 @@
   - name: url_check
     ansible.eda.url_check:
       urls:
-        - http://192.168.196.121
+        - http://192.168.196.131
       delay: 10
   rules:
   - name: Restart service if webpage unreachable
